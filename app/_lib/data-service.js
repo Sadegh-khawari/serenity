@@ -79,7 +79,7 @@ export async function getBookings(guestId) {
     .from("boookings")
     // We actually also need data on the cabins as well. But let's ONLY take the data that we actually need, in order to reduce download data.
     .select(
-      "id,created_at,startDate,endDate,numNights,numGuests,totalPrice,guestId,cabinId,cabins(name,image)",
+      "id,created_at,startDate,endDate,numNights,numGuests,totalPrice,guestId,cabinId,cabins(name,image)"
     )
     .eq("guestId", guestId)
     .order("startDate");
@@ -102,7 +102,7 @@ export async function getBookedDatesByCabinId(cabinId) {
     .from("bookings")
     .select("*")
     .eq("cabinId", cabinId)
-    .or(`startDate.gte${today},status.eq.checked-in`);
+    .or(`startDate.gte.${today},status.eq.checked-in`);
 
   if (error) {
     console.error(error);
@@ -136,7 +136,7 @@ export async function getSettings() {
 export async function getCountries() {
   try {
     const res = await fetch(
-      "https://restcountries.com/v2/all?fields=name,flag",
+      "https://restcountries.com/v2/all?fields=name,flag"
     );
     const countries = await res.json();
     return countries;
