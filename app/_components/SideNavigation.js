@@ -3,7 +3,6 @@
 import Link from "next/link";
 import {
   CalendarDaysIcon,
-  HandRaisedIcon,
   HomeIcon,
   UserIcon,
 } from "@heroicons/react/24/solid";
@@ -17,12 +16,12 @@ const navLinks = [
     icon: <HomeIcon className="h-5 w-5 text-primary-600" />,
   },
   {
-    name: "Reservation",
-    href: "/account/reservation",
+    name: "Reservations",
+    href: "/account/reservations",
     icon: <CalendarDaysIcon className="h-5 w-5 text-primary-600" />,
   },
   {
-    name: "Guest Profile",
+    name: "Guest profile",
     href: "/account/profile",
     icon: <UserIcon className="h-5 w-5 text-primary-600" />,
   },
