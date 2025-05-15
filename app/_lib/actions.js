@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
+import { getBookings } from "./data-service";
 
 export async function signInAction() {
   await signIn("google", {
@@ -43,4 +44,25 @@ export async function updateGuest(formData) {
   if (error) throw new Error("Guest could not be updated");
 
   revalidatePath("/account/profile");
+}
+
+export async function deleteReservation(bookingId) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const guestBookings = await getBookings(session.user.guestId);
+  const guestBookingsIds = guestBookings.map((booking) => booking.id);
+
+  if (!guestBookingsIds.includes(bookingId))
+    throw new Error("You are not allowed to delete this booking");
+
+
+  const { error } = await supabase
+    .from("bookings")
+    .delete()
+    .eq("id", bookingId);
+
+  if (error) console.error(error);
+
+  revalidatePath("/account/reservations");
 }
