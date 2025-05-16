@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import "@/app/_styles/globals.css";
 import { Josefin_Sans } from "next/font/google";
 import Header from "./_components/Header";
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         <div className="flex-1 px-8 py-12">
           <main className="max-w-7xl mx-auto ">
             <ReservationProvider>{children}</ReservationProvider>
+            <Analytics />
           </main>
         </div>
       </body>
