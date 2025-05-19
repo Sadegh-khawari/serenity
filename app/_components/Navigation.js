@@ -4,54 +4,57 @@ import MobileMenuButton from "./MobileMenuButton";
 
 export default async function Navigation() {
   const session = await auth();
-  console.log(session);
 
   return (
-    <nav className="z-10 text-xl relative">
+    <nav className="z-50 text-xl relative">
       <div className="flex items-center">
         <MobileMenuButton />
 
         {/* Navigation menu */}
-        <ul className="nav-menu hidden sm:flex flex-col sm:flex-row gap-4 sm:gap-16 items-center absolute sm:static top-full right-0 bg-primary-950 sm:bg-transparent w-48 sm:w-auto p-4 sm:p-0 shadow-lg sm:shadow-none">
-          <li>
-            <Link
-              href="/cabins"
-              className="hover:text-accent-400 transition-colors block py-2 sm:py-0"
-            >
-              Cabins
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className="hover:text-accent-400 transition-colors block py-2 sm:py-0"
-            >
-              About
-            </Link>
-          </li>
-          <li>
+        <ul className="nav-menu hidden sm:flex flex-col sm:flex-row gap-4 sm:gap-16 items-center fixed sm:static top-0 right-0 h-screen sm:h-auto w-64 sm:w-auto bg-primary-950 sm:bg-transparent p-8 sm:p-0 shadow-lg sm:shadow-none transform translate-x-full sm:translate-x-0 transition-all duration-300 ease-in-out opacity-0 sm:opacity-100">
+          <div className="flex flex-col w-full mt-8 sm:mt-0 sm:flex-row sm:items-center sm:gap-16">
             {session?.user?.image ? (
-              <Link
-                href="/account"
-                className="hover:text-accent-400 transition-colors flex items-center gap-4"
-              >
-                <img
-                  className="h-8 rounded-full"
-                  alt={session.user.name}
-                  src={session.user.image}
-                  referrerPolicy="no-referrer"
-                />
-                <span className="hidden sm:inline">Guest area</span>
-              </Link>
+              <li className="w-full border-b border-primary-800 sm:border-none">
+                <Link
+                  href="/account"
+                  className="hover:text-accent-400 transition-colors flex items-center justify-between py-4 sm:py-0"
+                >
+                  <span className="text-lg sm:text-xl">Guest area</span>
+                  <img
+                    className="h-8 w-8 rounded-full"
+                    alt={session.user.name}
+                    src={session.user.image}
+                    referrerPolicy="no-referrer"
+                  />
+                </Link>
+              </li>
             ) : (
-              <Link
-                href="/account"
-                className="hover:text-accent-400 transition-colors block py-2 sm:py-0"
-              >
-                Guest area
-              </Link>
+              <li className="w-full border-b border-primary-800 sm:border-none">
+                <Link
+                  href="/account"
+                  className="hover:text-accent-400 transition-colors block py-4 sm:py-0 text-lg sm:text-xl"
+                >
+                  Guest area
+                </Link>
+              </li>
             )}
-          </li>
+            <li className="w-full border-b border-primary-800 sm:border-none">
+              <Link
+                href="/cabins"
+                className="hover:text-accent-400 transition-colors block py-4 sm:py-0 text-lg sm:text-xl"
+              >
+                Cabins
+              </Link>
+            </li>
+            <li className="w-full border-b border-primary-800 sm:border-none">
+              <Link
+                href="/about"
+                className="hover:text-accent-400 transition-colors block py-4 sm:py-0 text-lg sm:text-xl"
+              >
+                About
+              </Link>
+            </li>
+          </div>
         </ul>
       </div>
     </nav>
