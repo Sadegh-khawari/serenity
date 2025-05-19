@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { auth } from "../_lib/auth";
 import MobileMenuButton from "./MobileMenuButton";
+import NavLink from "./NavLink";
 
 export default async function Navigation() {
   const session = await auth();
@@ -15,7 +15,7 @@ export default async function Navigation() {
           <div className="flex flex-col w-full sm:mt-0 sm:flex-row sm:items-center sm:gap-16">
             {session?.user?.image ? (
               <li className="w-full border-b border-primary-800 sm:border-none">
-                <Link
+                <NavLink
                   href="/account"
                   className="hover:text-accent-400 transition-colors flex items-center justify-between py-4 sm:py-0"
                 >
@@ -26,33 +26,33 @@ export default async function Navigation() {
                     src={session.user.image}
                     referrerPolicy="no-referrer"
                   />
-                </Link>
+                </NavLink>
               </li>
             ) : (
               <li className="w-full border-b border-primary-800 sm:border-none">
-                <Link
+                <NavLink
                   href="/account"
                   className="hover:text-accent-400 transition-colors block py-4 sm:py-0 text-lg sm:text-xl"
                 >
                   Guest area
-                </Link>
+                </NavLink>
               </li>
             )}
             <li className="w-full border-b border-primary-800 sm:border-none">
-              <Link
+              <NavLink
                 href="/cabins"
                 className="hover:text-accent-400 transition-colors block py-4 sm:py-0 text-lg sm:text-xl"
               >
                 Cabins
-              </Link>
+              </NavLink>
             </li>
             <li className="w-full border-b border-primary-800 sm:border-none">
-              <Link
+              <NavLink
                 href="/about"
                 className="hover:text-accent-400 transition-colors block py-4 sm:py-0 text-lg sm:text-xl"
               >
                 About
-              </Link>
+              </NavLink>
             </li>
           </div>
         </ul>
