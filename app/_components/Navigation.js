@@ -11,7 +11,7 @@ export default async function Navigation() {
         <MobileMenuButton />
 
         {/* Navigation menu */}
-        <ul className="nav-menu hidden sm:flex flex-col sm:flex-row gap-4 sm:gap-16 items-center fixed sm:static top-0 right-0 h-screen sm:h-auto w-64 sm:w-auto bg-primary-950 sm:bg-transparent p-8 sm:p-0 shadow-lg sm:shadow-none transform translate-x-full sm:translate-x-0 transition-all duration-300 ease-in-out opacity-0 sm:opacity-100">
+        <ul className="nav-menu sm:flex flex-col sm:flex-row gap-4 sm:gap-16 items-center fixed sm:static top-0 right-0 h-screen sm:h-auto w-64 sm:w-auto bg-primary-950 sm:bg-transparent p-8 sm:p-0 shadow-lg sm:shadow-none transform translate-x-full sm:translate-x-0 transition-all duration-300 ease-in-out opacity-0 sm:opacity-100 pointer-events-none sm:pointer-events-auto">
           <div className="flex flex-col w-full mt-8 sm:mt-0 sm:flex-row sm:items-center sm:gap-16">
             {session?.user?.image ? (
               <li className="w-full border-b border-primary-800 sm:border-none">

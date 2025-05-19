@@ -14,7 +14,7 @@ export default function Page() {
         alt="Mountains and forests with two cabins"
       />
 
-      <div className="relative z-10 text-center px-4 sm:px-6 md:px-8">
+      <div className="absolute bottom-16 left-0 right-0 z-10 text-center px-4 sm:px-6 md:px-8">
         <h1 className="text-4xl sm:text-6xl md:text-8xl text-primary-50 mb-6 sm:mb-8 md:mb-10 tracking-tight font-normal">
           Welcome to paradise.
         </h1>
