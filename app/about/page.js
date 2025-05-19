@@ -13,13 +13,13 @@ export default async function About() {
   const cabins = await getCabins();
 
   return (
-    <div className="grid grid-cols-5 gap-x-24 gap-y-32 text-lg items-center">
-      <div className="col-span-3">
-        <h1 className="text-4xl mb-10 text-accent-400 font-medium">
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-x-24 md:gap-y-32 text-base md:text-lg items-center">
+      <div className="md:col-span-3">
+        <h1 className="text-3xl md:text-4xl mb-6 md:mb-10 text-accent-400 font-medium">
           Welcome to The Serenity Stays
         </h1>
 
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           <p>
             Where nature&apos;s beauty and comfortable living blend seamlessly.
             Hidden away in the heart of the Italian Dolomites, this is your
@@ -41,30 +41,32 @@ export default async function About() {
         </div>
       </div>
 
-      <div className="col-span-2">
+      <div className="md:col-span-2">
         <Image
           src={image1}
           alt="Family sitting around a fire pit in front of cabin"
           placeholder="blur"
           quality={80}
+          className="rounded-lg"
         />
       </div>
 
-      <div className="col-span-2">
+      <div className="md:col-span-2 order-1 md:order-none">
         <Image
           src={image2}
           alt="Family that manages The Wild Oasis"
           placeholder="blur"
           quality={80}
+          className="rounded-lg"
         />
       </div>
 
-      <div className="col-span-3">
-        <h1 className="text-4xl mb-10 text-accent-400 font-medium">
+      <div className="md:col-span-3">
+        <h1 className="text-3xl md:text-4xl mb-6 md:mb-10 text-accent-400 font-medium">
           Managed by our family since 1962
         </h1>
 
-        <div className="space-y-8">
+        <div className="space-y-6 md:space-y-8">
           <p>
             Since 1962, The Serenity Stays has been a cherished family-run
             retreat. Started by our grandparents, this haven has been nurtured
@@ -79,16 +81,16 @@ export default async function About() {
             us at The Serenity Stays soon, where tradition meets tranquility,
             and every visit is like coming home.
           </p>
-
-          <div>
-            <a
-              href="/cabins"
-              className="inline-block mt-4 bg-accent-500 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-accent-600 transition-all"
-            >
-              Explore our luxury cabins
-            </a>
-          </div>
         </div>
+      </div>
+
+      <div className="md:col-span-5 order-last flex justify-center md:justify-start mt-8 md:mt-0 pt-8 border-t border-primary-800">
+        <a
+          href="/cabins"
+          className="inline-block bg-accent-500 px-6 md:px-8 py-4 md:py-5 text-primary-800 text-base md:text-lg font-semibold hover:bg-accent-600 transition-all rounded-md"
+        >
+          Explore our luxury cabins
+        </a>
       </div>
     </div>
   );
