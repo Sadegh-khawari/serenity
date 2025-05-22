@@ -51,11 +51,13 @@ function ReservationForm({ cabin, user }) {
         className="bg-primary-900 py-6 sm:py-8 lg:py-10 px-4 sm:px-8 lg:px-16 text-base sm:text-lg flex gap-4 sm:gap-5 flex-col"
       >
         <div className="space-y-2">
-          <label htmlFor="numGuests">How many guests?</label>
+          <label htmlFor="numGuests" className="text-sm sm:text-base">
+            How many guests?
+          </label>
           <select
             name="numGuests"
             id="numGuests"
-            className="px-4 sm:px-5 py-2.5 sm:py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-3 sm:px-4 py-2 sm:py-2.5 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm text-sm sm:text-base"
             required
           >
             <option value="" key="">
@@ -70,13 +72,13 @@ function ReservationForm({ cabin, user }) {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="observations">
+          <label htmlFor="observations" className="text-sm sm:text-base">
             Anything we should know about your stay?
           </label>
           <textarea
             name="observations"
             id="observations"
-            className="px-4 sm:px-5 py-2.5 sm:py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+            className="px-3 sm:px-4 py-2 sm:py-2.5 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm text-sm sm:text-base"
             placeholder="Any pets, allergies, special requirements, etc.?"
           />
         </div>

@@ -13,7 +13,32 @@ import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import { useReservation } from "./ReservationContext";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: 1024, // Default to desktop size
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+      });
+    }
+
+    // Add event listener
+    window.addEventListener("resize", handleResize);
+
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []); // Empty array ensures effect is only run on mount
+
+  return windowSize;
+}
 
 function isAlreadyBooked(range, datesArr) {
   return (
@@ -28,6 +53,7 @@ function isAlreadyBooked(range, datesArr) {
 function DateSelector({ settings, cabin, bookedDates }) {
   const { range, setRange, resetRange } = useReservation();
   const [month, setMonth] = useState(new Date());
+  const { width } = useWindowSize();
 
   const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
@@ -80,7 +106,7 @@ function DateSelector({ settings, cabin, bookedDates }) {
           fromDate={new Date()}
           toYear={new Date().getFullYear() + 5}
           captionLayout="dropdown"
-          numberOfMonths={window.innerWidth < 1024 ? 1 : 2}
+          numberOfMonths={width < 1024 ? 1 : 2}
           month={month}
           onMonthChange={setMonth}
           disabled={(curDate) =>
