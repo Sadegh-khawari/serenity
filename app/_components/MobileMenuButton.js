@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function MobileMenuButton() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -12,10 +13,12 @@ export default function MobileMenuButton() {
       menu.classList.remove("translate-x-full");
       menu.classList.remove("opacity-0");
       menu.classList.remove("pointer-events-none");
+      setIsVisible(false);
     } else {
       menu.classList.add("translate-x-full");
       menu.classList.add("opacity-0");
       menu.classList.add("pointer-events-none");
+      setIsVisible(true);
     }
   };
 
@@ -33,6 +36,7 @@ export default function MobileMenuButton() {
         menu?.classList.add("translate-x-full");
         menu?.classList.add("opacity-0");
         menu?.classList.add("pointer-events-none");
+        setIsVisible(true);
       }
     };
 
@@ -42,8 +46,8 @@ export default function MobileMenuButton() {
 
   return (
     <button
-      className={`mobile-menu-button sm:hidden p-2 relative z-50 ${
-        isOpen ? "hidden" : "block"
+      className={`mobile-menu-button sm:hidden p-2 relative z-50 transition-opacity duration-300 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       onClick={toggleMenu}
       aria-label="Toggle menu"
