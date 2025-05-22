@@ -58,7 +58,7 @@ function ReservationCard({ booking, onDelete }) {
           ) &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-2 sm:gap-5 mt-auto items-start sm:items-baseline">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div className="flex items-baseline gap-2">
             <p className="text-lg sm:text-xl font-semibold text-accent-400">
               ${totalPrice}
@@ -90,7 +90,13 @@ function ReservationCard({ booking, onDelete }) {
               className="flex-1"
             />
           </>
-        ) : null}
+        ) : (
+          <DeleteReservation
+            onDelete={onDelete}
+            bookingId={id}
+            className="flex-1"
+          />
+        )}
       </div>
     </div>
   );
